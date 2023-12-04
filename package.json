@@ -1,0 +1,44 @@
+{
+  "name": "immfly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "lint": "eslint *.ts",
+    "lint:fix": "prettier-eslint \"*.ts\" --write",
+    "lint:typescript": "tsc --noEmit",
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sufiane/immfly.git"
+  },
+  "author": "Sufiane Souissi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sufiane/immfly/issues"
+  },
+  "homepage": "https://github.com/Sufiane/immfly#readme",
+  "dependencies": {
+    "fastify": "4.24.3",
+    "prisma": "5.6.0",
+    "ts-node": "10.9.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "eslint": "8.54.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-config-standard-with-typescript": "40.0.0",
+    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-n": "16.3.1",
+    "eslint-plugin-promise": "6.1.1",
+    "prettier": "3.1.0",
+    "prettier-eslint": "16.1.2",
+    "prettier-eslint-cli": "8.0.1",
+    "typescript": "5.3.2"
+  },
+  "volta": {
+    "node": "20.10.0"
+  }
+}
