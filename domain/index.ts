@@ -3,3 +3,5 @@ import { PrismaClient } from '@prisma/client'
 export const dbClient = new PrismaClient({
     errorFormat: 'pretty',
 })
+
+export * from './dao'
