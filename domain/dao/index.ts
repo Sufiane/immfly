@@ -1,3 +1,6 @@
-export * as adminsDao from './admins'
-export * as usersDao from './users'
-export * as productsDao from './products'
+export { productsDao } from './products/'
+export { adminsDao } from './admins'
+export { usersDao } from './users'
+
+export type { ProductsTypes } from './products'
+export type { AdminsTypes } from './admins'

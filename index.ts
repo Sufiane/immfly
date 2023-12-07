@@ -2,7 +2,7 @@ import Fastify from 'fastify'
 import fastifyJwt from '@fastify/jwt'
 
 import { dbClient } from './domain'
-import { adminRoutes } from './routes/admin'
+import { adminRoutes, productRoutes } from './routes/admin/'
 
 const fastify = Fastify({
     logger: true,
@@ -28,6 +28,8 @@ const start = async (): Promise<void> => {
             },
         })
         await fastify.register(adminRoutes, { prefix: '/api/admin' })
+        await fastify.register(productRoutes, { prefix: '/api/admin/products' })
+
         await fastify.listen({ port: 7777 })
     } catch (err) {
         fastify.log.error(err)

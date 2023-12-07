@@ -1,4 +1,4 @@
-import { dbClient } from '../index'
+import { dbClient } from '../../index'
 
 export const create = async (
     name: string,

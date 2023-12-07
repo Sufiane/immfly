@@ -1,4 +1,6 @@
-import { dbClient } from '../index'
+import { dbClient } from '../../index'
+
+import { type FullProduct } from './types'
 
 export const create = async (
     name: string,
@@ -39,5 +41,18 @@ export const deleteProduct = async (productId: number): Promise<void> => {
         where: {
             id: productId,
         },
+    })
+}
+
+export const getAllSelect = {
+    description: true,
+    price: true,
+    name: true,
+    id: true,
+}
+
+export const getAll = async (): Promise<FullProduct[]> => {
+    return dbClient.products.findMany({
+        select: getAllSelect,
     })
 }

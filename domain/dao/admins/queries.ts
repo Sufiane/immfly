@@ -1,4 +1,5 @@
-import { dbClient } from '../index'
+import { dbClient } from '../../index'
+import { BasicAdmin, FullAdmin } from './types'
 
 export const create = async (
     email: string,
@@ -34,26 +35,30 @@ export const deleteAdmin = async (adminId: number): Promise<void> => {
     })
 }
 
+export const fullAdminSelect = {
+    id: true,
+    email: true,
+    password: true,
+}
+
 export const getOneByEmail = (
     email: string
-): Promise<{ email: string; password: string; id: number } | null> => {
+): Promise<FullAdmin | null> => {
     return dbClient.admins.findUnique({
-        select: {
-            id: true,
-            email: true,
-            password: true,
-        },
+        select: fullAdminSelect,
         where: {
             email,
         },
     })
 }
 
-export const getAll = (): Promise<Array<{ id: number; email: string }>> => {
+export const basicSelect = {
+    id: true,
+    email: true,
+}
+
+export const getAll = (): Promise<BasicAdmin[]> => {
     return dbClient.admins.findMany({
-        select: {
-            id: true,
-            email: true,
-        },
+        select: basicSelect,
     })
 }
