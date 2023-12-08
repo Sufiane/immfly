@@ -24,7 +24,6 @@ export async function adminRoutes(fastify: FastifyInstance): Promise<void> {
         handler: loginAdmin,
     })
 
-    // create admin
     fastify.route({
         method: 'POST',
         url: '/create',

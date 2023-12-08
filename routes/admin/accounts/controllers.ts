@@ -7,6 +7,7 @@ import {
     type LoginPayload,
     type UpdatePasswordPayload,
 } from './types'
+import { comparePassword, hashPassword } from '../../../auth'
 
 export async function loginAdmin(
     this: FastifyInstance,
@@ -20,7 +21,7 @@ export async function loginAdmin(
 
     // To not let anyone outside the app know if an email is used or not
     // we do not send back a more detailed response.
-    if (!userInDb || password !== userInDb.password) {
+    if (!userInDb || !(await comparePassword(password, userInDb.password))) {
         throw new Error('Wrong email or password.')
     }
 
@@ -33,7 +34,9 @@ export const createAdmin = async ({
     Body: CreateAdminPayload
 }>): Promise<void> => {
     try {
-        await adminsDao.create(email, password)
+        const hashedPassword = await hashPassword(password)
+
+        await adminsDao.create(email, hashedPassword)
     } catch (e) {
         throw new Error('Could not create new admin.')
     }
@@ -44,7 +47,9 @@ export const updatePassword = async ({
     body: { password },
 }: FastifyRequest<{ Body: UpdatePasswordPayload }>): Promise<void> => {
     try {
-        await adminsDao.updatePasswordByEmail(authUser.email, password)
+        const hashedPassword = await hashPassword(password)
+
+        await adminsDao.updatePasswordByEmail(authUser.email, hashedPassword)
     } catch {
         throw new Error('Error while updating admin password.')
     }
