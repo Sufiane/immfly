@@ -17,15 +17,47 @@ model Admins {
 }
 
 model Products {
-  id          Int    @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   name        String
   description String
   price       Int
+  Orders      OrderHasProduct[]
 }
 
 model Users {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  name     String
-  password String
+  id        Int         @id @default(autoincrement())
+  email     String      @unique
+  name      String
+  password  String
+  addresses Addresses[]
+  orders    Orders[]
+}
+
+model Addresses {
+  id     Int      @id @default(autoincrement())
+  userId Int      @map("user_id")
+  user   Users    @relation(fields: [userId], references: [id])
+  orders Orders[]
+}
+
+model Orders {
+  id                Int               @id @default(autoincrement())
+  date              DateTime
+  state             String // Unfortunately Prisma does not map prisma enums to sqlite
+  deliveryAddressId Int               @map("delivery_address_id")
+  userId            Int               @map("user_id")
+  DeliveryAddress   Addresses         @relation(fields: [deliveryAddressId], references: [id])
+  Users             Users             @relation(fields: [userId], references: [id])
+  Products          OrderHasProduct[]
+}
+
+model OrderHasProduct {
+  productId Int      @map("product_id")
+  Product   Products @relation(fields: [productId], references: [id])
+  orderId   Int      @map("order_id")
+  Order     Orders   @relation(fields: [orderId], references: [id])
+  quantity  Int
+
+  @@id([orderId, productId])
+  @@map("order_has_product")
 }
