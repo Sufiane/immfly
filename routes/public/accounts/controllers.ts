@@ -1,8 +1,8 @@
 import { type FastifyReply, type FastifyRequest } from 'fastify'
 
 import { type LoginPayload, type SignupPayload } from './types'
-import { usersDao } from '../../domain/'
-import { comparePassword, hashPassword } from '../../auth'
+import { usersDao } from '../../../domain'
+import { comparePassword, hashPassword } from '../../../auth'
 
 export const signup = async (
     {
@@ -16,7 +16,7 @@ export const signup = async (
 
         const token = await reply.jwtSign({ email })
 
-        return await reply.send(token)
+        return await reply.send({ token })
     } catch {
         throw new Error('Could not signup user')
     }

@@ -21,6 +21,4 @@ export async function publicRoutes(fastify: FastifyInstance): Promise<void> {
         },
         handler: login,
     })
-
-
 }

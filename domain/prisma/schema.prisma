@@ -22,6 +22,7 @@ model Products {
   description String
   price       Int
   Orders      OrderHasProduct[]
+  Carts       CartHasProduct[]
 }
 
 model Users {
@@ -31,6 +32,7 @@ model Users {
   password  String
   addresses Addresses[]
   orders    Orders[]
+  Carts     Carts[]
 }
 
 model Addresses {
@@ -60,4 +62,24 @@ model OrderHasProduct {
 
   @@id([orderId, productId])
   @@map("order_has_product")
+}
+
+model Carts {
+  // Since there is no expiration date on cart
+  // each user only have one cart
+  // the cart is emptied (ie: destroyed and created again) after each order
+  userId   Int              @id @map("user_id")
+  User     Users            @relation(fields: [userId], references: [id])
+  Products CartHasProduct[]
+}
+
+model CartHasProduct {
+  cartId    Int      @map("cart_id")
+  Cart      Carts    @relation(fields: [cartId], references: [userId])
+  productId Int      @map("product_id")
+  Product   Products @relation(fields: [productId], references: [id])
+  quantity  Int
+
+  @@id([cartId, productId])
+  @@map("cart_has_product")
 }

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "prisma": {
-    "schema": "domain/prisma/schema.prisma"
+    "schema": "domain/prisma/schema.prisma",
+    "seed": "ts-node domain/prisma/seed.ts"
   },
   "scripts": {
     "generate": "prisma generate",
