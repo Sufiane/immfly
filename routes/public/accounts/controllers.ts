@@ -1,7 +1,11 @@
 import { type FastifyReply, type FastifyRequest } from 'fastify'
 
-import { type LoginPayload, type SignupPayload } from './types'
-import { usersDao } from '../../../domain'
+import {
+    CreateAddressPayload,
+    type LoginPayload,
+    type SignupPayload,
+} from './types'
+import { addressesDao, usersDao } from '../../../domain'
 import { comparePassword, hashPassword } from '../../../auth'
 
 export const signup = async (
@@ -42,4 +46,14 @@ export const login = async (
     } catch {
         throw new Error('Could not login.')
     }
+}
+
+export const createAddress = async ({
+    body: address,
+    user: { email },
+}: FastifyRequest<{ Body: CreateAddressPayload }>): Promise<void> => {
+    // no need to check, if we're here the user exist
+    const userInDb = (await usersDao.getOneByEmail(email))!
+
+    await addressesDao.createAddress(userInDb.id, address)
 }

@@ -17,3 +17,11 @@ export const signup = Type.Required(
         name: Type.String({ minLength: 1 }),
     })
 )
+
+export const createAddress = Type.Object({
+    street: Type.String(),
+    additionalStreet: Type.Optional(Type.String()),
+    zipCode: Type.Number(),
+    city: Type.String(),
+    country: Type.String(),
+})

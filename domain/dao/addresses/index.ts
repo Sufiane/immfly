@@ -1,0 +1,1 @@
+export * as addressesDao from './queries'

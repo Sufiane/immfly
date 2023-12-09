@@ -36,10 +36,15 @@ model Users {
 }
 
 model Addresses {
-  id     Int      @id @default(autoincrement())
-  userId Int      @map("user_id")
-  user   Users    @relation(fields: [userId], references: [id])
-  orders Orders[]
+  id               Int      @id @default(autoincrement())
+  userId           Int      @map("user_id")
+  street           String
+  additionalStreet String?  @map("additional_street")
+  zipCode          Int      @map("zip_code")
+  city             String
+  country          String
+  user             Users    @relation(fields: [userId], references: [id])
+  orders           Orders[]
 }
 
 model Orders {
