@@ -1,5 +1,5 @@
 import { dbClient, type TransactionClient } from '../../index'
-import { FullOrder } from './types'
+import { type FullOrder, type FullOrderAdmin } from './types'
 
 export const create = async (
     userId: number,
@@ -55,7 +55,7 @@ export const getAllByEmailSelect = {
     },
 }
 
-export const getAllByEmail = async (email: string): Promise<FullOrder[]> => {
+export const getAllByEmail = (email: string): Promise<FullOrder[]> => {
     return dbClient.orders.findMany({
         select: getAllByEmailSelect,
         where: {
@@ -63,5 +63,22 @@ export const getAllByEmail = async (email: string): Promise<FullOrder[]> => {
                 email,
             },
         },
+    })
+}
+
+export const getAllOrdersSelect = {
+    ...getAllByEmailSelect,
+    Users: {
+        select: {
+            id: true,
+            name: true,
+            email: true,
+        },
+    },
+}
+
+export const getAll = (): Promise<FullOrderAdmin[]> => {
+    return dbClient.orders.findMany({
+        select: getAllOrdersSelect,
     })
 }
