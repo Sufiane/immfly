@@ -25,3 +25,7 @@ export const createAddress = Type.Object({
     city: Type.String(),
     country: Type.String(),
 })
+
+export const createOrder = Type.Object({
+    deliveryAddressId: Type.Number(),
+})

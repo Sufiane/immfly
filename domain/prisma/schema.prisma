@@ -80,7 +80,7 @@ model Carts {
 
 model CartHasProduct {
   cartId    Int      @map("cart_id")
-  Cart      Carts    @relation(fields: [cartId], references: [userId])
+  Cart      Carts    @relation(fields: [cartId], references: [userId], onDelete: Cascade)
   productId Int      @map("product_id")
   Product   Products @relation(fields: [productId], references: [id])
   quantity  Int

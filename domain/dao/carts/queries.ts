@@ -1,4 +1,4 @@
-import { dbClient } from '../../index'
+import { dbClient, type TransactionClient } from '../../index'
 import { type FullCart } from './types'
 
 export const fullCartSelect = {
@@ -40,24 +40,15 @@ export const createCart = async (userId: number): Promise<FullCart> => {
     })
 }
 
-export const upsert = async (
-    cartId: number,
-    data: { productId: number; quantity: number }
+export const deleteCart = async (
+    userId: number,
+    transaction?: TransactionClient
 ): Promise<void> => {
-    await dbClient.cartHasProduct.upsert({
-        create: {
-            quantity: data.quantity,
-            productId: data.productId,
-            cartId,
-        },
-        update: {
-            quantity: data.quantity,
-        },
+    const db = transaction ?? dbClient
+
+    await db.carts.delete({
         where: {
-            cartId_productId: {
-                cartId,
-                productId: data.productId,
-            },
+            userId,
         },
     })
 }

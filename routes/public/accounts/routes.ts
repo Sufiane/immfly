@@ -4,8 +4,15 @@ import {
     signup as signupSchema,
     login as loginSchema,
     createAddress as createAddressSchema,
+    createOrder as createOrderSchema,
 } from './schemas'
-import { createAddress, login, signup } from './controllers'
+import {
+    createAddress,
+    createOrder,
+    getOrders,
+    login,
+    signup,
+} from './controllers'
 import { verifyJwt } from '../../../auth'
 
 export async function publicRoutes(fastify: FastifyInstance): Promise<void> {
@@ -35,5 +42,22 @@ export async function publicRoutes(fastify: FastifyInstance): Promise<void> {
         },
         onRequest: [verifyJwt],
         handler: createAddress,
+    })
+
+    fastify.route({
+        method: 'POST',
+        url: '/orders',
+        schema: {
+            body: createOrderSchema,
+        },
+        onRequest: [verifyJwt],
+        handler: createOrder,
+    })
+
+    fastify.route({
+        method: 'GET',
+        url: '/orders/list',
+        onRequest: [verifyJwt],
+        handler: getOrders,
     })
 }
