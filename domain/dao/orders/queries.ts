@@ -82,3 +82,17 @@ export const getAll = (): Promise<FullOrderAdmin[]> => {
         select: getAllOrdersSelect,
     })
 }
+
+export const updateState = async (
+    orderId: number,
+    state: string
+): Promise<void> => {
+    await dbClient.orders.update({
+        data: {
+            state,
+        },
+        where: {
+            id: orderId,
+        },
+    })
+}

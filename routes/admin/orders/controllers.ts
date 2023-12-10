@@ -1,4 +1,6 @@
 import { ordersDao } from '../../../domain'
+import { FastifyRequest } from 'fastify'
+import { UpdateStatePayload } from './types'
 
 export const getAll = async (): Promise<
     Array<{
@@ -61,4 +63,10 @@ export const getAll = async (): Promise<
             products,
         }
     })
+}
+
+export const updateState = async ({
+    body: { state, orderId },
+}: FastifyRequest<{ Body: UpdateStatePayload }>): Promise<void> => {
+    await ordersDao.updateState(orderId, state)
 }
