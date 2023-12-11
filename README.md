@@ -62,7 +62,34 @@ For a production ready application, it would indeed need a more robust DB.
 
 ---
 
- TODO
+There is 2 main folder in the project:
+- `domain`
+- `routes`
+
+#### Domain
+In the domain folder you'll find everything DB related.
+
+The dao folder hold all the access to the DB.
+Meaning all the queries definition divided by a folder for each DB entity.
+Next the prisma folder have all data related to prisma, from schema definitions to migrations.
+
+#### Routes
+In the routes folder you'll have everything related to the different API endpoints.
+This folder is then divided in 2 sub-folders, *admin* & *public*. 
+Each one respectively holding the API endpoints of the same name. 
+Each of them is then divided by the entity path.
+
+In every entity path folder you'll find:
+ - a `routes.ts` file: The endpoints definitions
+ - a `controllers.ts` file: the business logic for each endpoint
+
+If needed you'll also find:
+ - a `schemas.ts` file: the schemas definitions of body/path for your requests
+ - a `types.ts` file: every type definition used for this entity
+
+## 
+In the `auth` folder, you'll find utilities functions to handle JWTs and passwords
+
 
 ## How to query the APIs
 
