@@ -1,10 +1,10 @@
 # E-Commerce platform project
 
----
+
 
 ## Context
 
----
+
 The idea of this project is to create the APIs to manage both the admin side and the public side 
 of an e-commerce web platform.
 
@@ -18,7 +18,7 @@ It will be possible to create an account, login and have a proper shopping exper
 
 ## Features
 
----
+
 ##### An admin can:
 * Create another admin account
 * Delete another admin account
@@ -41,7 +41,6 @@ It will be possible to create an account, login and have a proper shopping exper
 
 ## Architectural decision
 
----
 
 *TL;DR*
 
@@ -60,7 +59,6 @@ For a production ready application, it would indeed need a more robust DB.
 
 ## Folder structures
 
----
 
 There is 2 main folder in the project:
 - `domain`
@@ -93,7 +91,6 @@ In the `auth` folder, you'll find utilities functions to handle JWTs and passwor
 
 ## How to query the APIs
 
----
 
 You can get the full collection of all endpoints with the following [Insomnia](https://insomnia.rest/) file available at the root of the project
 
