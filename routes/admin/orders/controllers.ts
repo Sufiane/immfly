@@ -1,6 +1,6 @@
 import { ordersDao } from '../../../domain'
-import { FastifyRequest } from 'fastify'
-import { UpdateStatePayload } from './types'
+import { type FastifyRequest } from 'fastify'
+import { type UpdateStatePayload } from './types'
 
 export const getAll = async (): Promise<
     Array<{

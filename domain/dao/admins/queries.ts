@@ -1,5 +1,5 @@
 import { dbClient } from '../../index'
-import { BasicAdmin, FullAdmin } from './types'
+import { type BasicAdmin, type FullAdmin } from './types'
 
 export const create = async (
     email: string,
