@@ -88,6 +88,16 @@ If needed you'll also find:
 ## 
 In the `auth` folder, you'll find utilities functions to handle JWTs and passwords
 
+## How to run
+
+You'll need to have <u>_Node.js v20_</u>
+
+You then have to run
+
+``npm i``
+
+You should have now a server running locally on port: `7777`
+
 
 ## How to query the APIs
 
@@ -98,3 +108,17 @@ _**insomnia-collection.json**_
 
 Simply import the file into your insomnia workspace and you're all set ! 
 
+_PS: an admin account is already seeded in the database_
+>
+> mail: `admin@email.com`
+> 
+> password: `1234567`
+
+
+## Improvements
+
+A few improvements could be made to enhance the usage of the api.
+
+The main one would be the ability to use bulk action.
+For instance the ability to update multiple order statuses as admin.
+To delete multiple products/admins as well.
