@@ -6,6 +6,7 @@ import {
     createProduct,
     updateProduct,
     deleteProduct,
+    getProduct,
 } from './controllers'
 import {
     createProduct as createProductSchema,
@@ -31,6 +32,16 @@ export const productRoutes = async (
         },
         onRequest: [verifyJwt],
         handler: createProduct,
+    })
+
+    fastify.route({
+        method: 'GET',
+        url: '/:productId',
+        onRequest: [verifyJwt],
+        schema: {
+            params: productParamsSchema,
+        },
+        handler: getProduct,
     })
 
     fastify.route({

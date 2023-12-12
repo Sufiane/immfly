@@ -1,4 +1,4 @@
-import { type FastifyRequest } from 'fastify'
+import { type FastifyReply, type FastifyRequest } from 'fastify'
 
 import { productsDao, type ProductsTypes } from '../../../domain/dao/'
 import {
@@ -19,6 +19,19 @@ export const createProduct = async ({
     } catch {
         throw new Error('Could not create product.')
     }
+}
+
+export const getProduct = async (
+    { params: { productId } }: FastifyRequest<{ Params: ProductParams }>,
+    reply: FastifyReply
+): Promise<ProductsTypes.FullProduct> => {
+    const product = await productsDao.getOne(productId)
+
+    if (!product) {
+        return reply.code(404).send('Product not found.')
+    }
+
+    return product
 }
 
 export const updateProduct = async ({

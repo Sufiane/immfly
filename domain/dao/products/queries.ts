@@ -2,6 +2,13 @@ import { dbClient } from '../../index'
 
 import { type FullProduct } from './types'
 
+export const fullProductSelect = {
+    description: true,
+    price: true,
+    name: true,
+    id: true,
+}
+
 export const create = async (
     name: string,
     price: number,
@@ -12,6 +19,15 @@ export const create = async (
             name,
             price,
             description,
+        },
+    })
+}
+
+export const getOne = (productId: number): Promise<FullProduct | null> => {
+    return dbClient.products.findUnique({
+        select: fullProductSelect,
+        where: {
+            id: productId,
         },
     })
 }
@@ -44,15 +60,8 @@ export const deleteProduct = async (productId: number): Promise<void> => {
     })
 }
 
-export const getAllSelect = {
-    description: true,
-    price: true,
-    name: true,
-    id: true,
-}
-
 export const getAll = async (): Promise<FullProduct[]> => {
     return dbClient.products.findMany({
-        select: getAllSelect,
+        select: fullProductSelect,
     })
 }
