@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-12-10T16:12:04.565Z",
+  "__export_date": "2023-12-12T15:35:35.643Z",
   "__export_source": "insomnia.desktop.app:v8.4.5",
   "resources": [
     {
@@ -454,6 +454,49 @@
       "_type": "request"
     },
     {
+      "_id": "req_6d4285f03a494c4faca9ff40eb7f1cf9",
+      "parentId": "fld_4d0e7f4a01b240e6aa65d8f2c52c7fc9",
+      "modified": 1702394632655,
+      "created": 1702394572430,
+      "url": "{{ _.product_url }}/10000",
+      "name": "get one",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/8.4.5"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdWxhQGVtYWlsLmNvbSIsImlhdCI6MTcwMjM5NDYwM30.I2XfUdMbaILcJLgRRhI0ruFkD0NTxhsDNFYSjRQMXBI"
+      },
+      "metaSortKey": -1702394572431,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_4d0e7f4a01b240e6aa65d8f2c52c7fc9",
+      "parentId": "fld_f0372ddba83044348bb509e00aafe14f",
+      "modified": 1701961722088,
+      "created": 1701961722088,
+      "name": "products",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1701961722088,
+      "_type": "request_group"
+    },
+    {
       "_id": "req_ef7db4142ae14429a6283262860b147d",
       "parentId": "fld_4d0e7f4a01b240e6aa65d8f2c52c7fc9",
       "modified": 1701964146151,
@@ -483,18 +526,6 @@
       "settingRebuildPath": true,
       "settingFollowRedirects": "global",
       "_type": "request"
-    },
-    {
-      "_id": "fld_4d0e7f4a01b240e6aa65d8f2c52c7fc9",
-      "parentId": "fld_f0372ddba83044348bb509e00aafe14f",
-      "modified": 1701961722088,
-      "created": 1701961722088,
-      "name": "products",
-      "description": "",
-      "environment": {},
-      "environmentPropertyOrder": null,
-      "metaSortKey": -1701961722088,
-      "_type": "request_group"
     },
     {
       "_id": "req_f75207500af046339cce523a51bbb79c",
@@ -606,7 +637,7 @@
     {
       "_id": "req_321a24546d2a4ad6a4616bed07f1c423",
       "parentId": "fld_ef206a2417794bd7a92588f6ec38f451",
-      "modified": 1702049966480,
+      "modified": 1702236226286,
       "created": 1701879187321,
       "url": "{{ _.admin_url }}/list",
       "name": "list",
@@ -622,7 +653,7 @@
       ],
       "authentication": {
         "type": "bearer",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1ZmlhbmU1QGVtYWlsLmNvbSIsImlhdCI6MTcwMjA0OTk1NH0.aKzGfPtKPSS3h_dmxjDCdBeYDJF26kaMvsyyVM407rk"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTcwMjIzNjE2NX0.8j-PoSEh64U0OYtPyyN07x2Bf-oPNpfd4ZoQU-RO2Oc"
       },
       "metaSortKey": -1701961397106,
       "isPrivate": false,
@@ -687,7 +718,7 @@
     {
       "_id": "req_f841af5d2d03468b9cfbe5f424f0d305",
       "parentId": "fld_ef206a2417794bd7a92588f6ec38f451",
-      "modified": 1701964773134,
+      "modified": 1702236217348,
       "created": 1701794188771,
       "url": "{{ _.admin_url }}/create",
       "name": "create",
@@ -695,7 +726,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"sufiane5@email.com\",\n\t\"password\": \"sufiane5\"\n}"
+        "text": "{\n\t\"email\": \"paula@email.com\",\n\t\"password\": \"paula123\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -710,7 +741,7 @@
       ],
       "authentication": {
         "type": "bearer",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1ZmlhbmUzQGVtYWlsLmNvbSIsImlhdCI6MTcwMTk2NDc2MX0.3YmE_7wFajeUG9DGxNoXHosaGMp11pCT3pr-UwXU3qM"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTcwMjIzNjE2NX0.8j-PoSEh64U0OYtPyyN07x2Bf-oPNpfd4ZoQU-RO2Oc"
       },
       "metaSortKey": -1701961397031,
       "isPrivate": false,
@@ -725,7 +756,7 @@
     {
       "_id": "req_c002439529c847bc98985377adcbecbf",
       "parentId": "fld_ef206a2417794bd7a92588f6ec38f451",
-      "modified": 1702074260610,
+      "modified": 1702236250630,
       "created": 1701797485637,
       "url": "{{ _.admin_url }}/login",
       "name": "Login ",
@@ -733,7 +764,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"admin@email.com\",\n\t\"password\": \"1234567\"\n}"
+        "text": "{\n\t\"email\": \"paula@email.com\",\n\t\"password\": \"paula123\"\n}"
       },
       "parameters": [],
       "headers": [
